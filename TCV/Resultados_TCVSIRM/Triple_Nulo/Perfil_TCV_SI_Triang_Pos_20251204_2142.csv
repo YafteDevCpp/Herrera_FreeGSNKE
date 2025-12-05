@@ -1,0 +1,43 @@
+Parámetro,Valor,Unidad
+PERFIL DE ARRANQUE,,
+Corriente de entrada,1000000.0,Amps
+Radio mayor,0.88,m
+Presión,40000.0,Pa
+Campo toroidal Bt,1.8,T
+Vacío $F = RB_t$,1.584,
+FORMA DEL PLASMA,,
+Beta poloidal,<bound method Equilibrium.poloidalBeta1 of <freegsnke.equilibrium_update.Equilibrium object at 0x2fa569960>>,
+Beta toroidal,<bound method Equilibrium.toroidalBeta1 of <freegsnke.equilibrium_update.Equilibrium object at 0x2fa569960>>,
+Beta total normalizada,0.005190473534455164,
+Elongación geométrica,1.375856167271369,
+Triangularidad,0.20637149893451184,
+Interseca la pared,False,
+Aspect ratio,3.5385520933869423,
+Aspect ratio inverso,0.28260146342591924,
+Radio menor,0.24521275081386956,m
+Volumen del plasma,1.3640852011239097,m³
+,,
+PARÁMETROS DEL PLASMA,,
+Corriente total del plasma,999999.9999999999,Amps
+Presión en el eje,40000.0,Pa
+Presión promedio,39583.230632872874,Pa
+Energía térmica,N/A,J
+Parámetro am,2.0,
+Parámetro an,2.0,
+Lambda,7988277.7358927885,
+Beta0,0.06794258472151003,
+,,
+Eje geométrico,"(0.868, 0.113)","(R,Z)"
+Eje magnético,"(0.873, 0.125, 5.357e-01)","(R,Z,ψ)"
+Separatriz en Z=0,"(0.634, 1.075)","(R_in, R_out)"
+Desplazamiento de Shafranov,[0.00568699 0.0123085 ],"(ΔR, ΔZ)"
+,,
+COORDENADAS DE CONTROL,,
+"Punto X (Rx,Zx)","[0.6499, -0.2393]",m
+Puntos nulos (X/O),"[[0.6499], [-0.2393]]","(R,Z)"
+Restricciones isoflux,"[[[0.6499, 0.88, 0.6266, 1.0806, 0.9174, 1.0786, 0.6474, 0.88], [-0.2393, 0.4607, 0.0, 0.0, -0.1868, 0.2777, 0.2777, -0.2091]]]","(R,Z)"
+,,
+TOLERANCIAS DEL SOLUCIONADOR,,
+Tolerancia objetivo (residuo),0.006,
+Tolerancia objetivo (actualización de psit),0.001,
+,,
