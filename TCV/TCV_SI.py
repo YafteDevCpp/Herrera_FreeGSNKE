@@ -25,8 +25,11 @@ from freegsnke.inverse import Inverse_optimizer
 directorio_actual = os.getcwd()
 print(f"Directorio actual: {directorio_actual}")
 
+# 
+
+
 # Nombre de la Corrida
-nombre = "Triple_Nulo"
+nombre = "Triple_Nulo_Test"
 
 
 tokamak=build_machine.tokamak(
@@ -48,6 +51,7 @@ if not os.path.exists(path_resultados):
 N = "Triang_Pos"  
 nombre_base = "TCV_SI_" + N
 
+'''
 # Timestamp para evitar sobrescritura, le agrega datos de tiempo a los resultados obtenidos
 timestamp = datetime.now().strftime("%Y%m%d_%H%M")
 
@@ -57,6 +61,16 @@ nombre_img = f"{nombre_base}_{timestamp}.png"
 nombre_csv = f"{nombre_base}_{timestamp}.csv"
 nombre_pickle = f"{nombre_base}_{timestamp}.pk"
 
+'''
+
+# Imprimir rutas de guardado con sobreescritura 
+
+# Nombres de archivos 
+nombre_cons = f"{nombre_base}.png"
+nombre_img = f"{nombre_base}.png"
+nombre_csv = f"{nombre_base}.csv"
+nombre_pickle = f"{nombre_base}.pk"
+
 # Rutas completas para guardar
 path_tablas = path_resultados
 path_imagenes = path_resultados
@@ -65,7 +79,7 @@ path_pickle = path_resultados
 #%%
 eq = equilibrium_update.Equilibrium(
     tokamak=tokamak,      # provide tokamak object
-    Rmin=0.1, Rmax=1.8,   # radial range
+    Rmin=0.4, Rmax=1.8,   # radial range
     Zmin=-1.3, Zmax=1.3,  # vertical range
     nx=65,                # number of grid points in the radial direction (needs to be of the form (2**n + 1) with n being an integer)
     ny=129,               # number of grid points in the vertical direction (needs to be of the form (2**n + 1) with n being an integer)
@@ -105,8 +119,8 @@ profiles_beta = ConstrainBetapIp(
 '''
 
 #%%
-Rx = 0.6499      # X-point radius
-Zx = -0.2393      # X-point height
+Rx = 0.88      # X-point radius
+Zx = -0.42     # X-point height
 Rout = 1.0806    # outboard midplane radius
 Rin = 0.6266    # inboard midplane radius
 
@@ -117,8 +131,13 @@ null_points = [[Rx], [Zx]]
 # set desired isoflux constraints with format 
 # isoflux_set = [isoflux_0, isoflux_1 ... ] 
 # with each isoflux_i = [R_coords, Z_coords]
-isoflux_set = np.array([[[Rx,0.88, Rin, Rout, 0.9174, 1.0786, 0.6474, 0.88], 
-                         [Zx, 0.4607, 0.,0., -0.1868, 0.2777, 0.2777, -0.2091]]])
+isoflux_set = np.array([[
+    # R positions: X-point + 8 boundary points
+   [0.88, 0.65, 0.70, 0.75, 0.85, 0.95, 1.05, 1.10],
+    
+    # Z positions
+    [-0.42, 0.00, 0.15, 0.25, 0.35, 0.40, 0.35, 0.00]
+]])
            
 # instantiate the freegsnke constrain object
 
@@ -163,8 +182,8 @@ perfil_resumen = [
     ["Campo toroidal Bt", Bt, 'T'],
     [r'Vacío $F = RB_t$', FVAC, ''],
     ['FORMA DEL PLASMA', '', ''],
-    ["Beta poloidal", eq.poloidalBeta1, ''],
-    ["Beta toroidal", eq.toroidalBeta1, ''],
+    ["Beta poloidal", eq.poloidalBeta, ''],
+    ["Beta toroidal", eq.toroidalBeta, ''],
     ["Beta total normalizada", eq.normalised_total_Beta(), ''],
     ["Elongación geométrica", eq.geometricElongation(), ''],
     ["Triangularidad", eq.triangularity(), ''],
